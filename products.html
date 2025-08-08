@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Jena Farming Projects</title>
+    
+    <!-- External Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Products Page Specific Styles */
+        :root {
+            --white: #ffffff;
+            --light-green: #f5faf7;
+            --primary-green: #2e8b57;
+            --dark-green: #1e5c3a;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        body {
+            padding-top: 80px;
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            margin: 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Products Main Section */
+        .products-main {
+            padding: 60px 0 100px;
+            background-color: var(--white);
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin: 0 0 10px;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+        }
+        
+        .product-info p {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            margin: 15px 0;
+            color: var(--dark-green);
+            font-size: 1.2rem;
+        }
+        
+        .btn-product {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-product:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* Product Features Section */
+        .product-features {
+            padding: 80px 0;
+            background-color: var(--light-green);
+        }
+
+        .features-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-green);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: var(--primary-green);
+        }
+        
+        .feature-card p {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            padding: 80px 0;
+            background-color: var(--primary-green);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-green);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+
+            .cta-section {
+                padding: 60px 0;
+            }
+
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+            
+            .product-img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="products-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Premium Products</h1>
+                <p>High-quality, sustainably produced livestock and products from our farms in Zimbabwe and Zambia</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="cattle.jpeg" alt="Premium Cattle">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cattle</h3>
+                        <p>Premium breeding stock and organic meat from our sustainable farms. Raised using climate-smart methods with excellent animal welfare standards.</p>
+                        <div class="product-price">Starting at $120</div>
+                        <a href="#contact" class="btn-product">Request Quote</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="goat.jpeg" alt="Premium Goats">
+                    </div>
+                    <div class="product-info">
+                        <h3>Goats</h3>
+                        <p>High-quality breeding stock and organic meat from our sustainable farms. Perfect for both commercial and small-scale farming operations.</p>
+                        <div class="product-price">Starting at $80</div>
+                        <a href="#contact" class="btn-product">Request Quote</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="roadrunner.jpeg" alt="Free-Range Roadrunners">
+                    </div>
+                    <div class="product-info">
+                        <h3>Roadrunners</h3>
+                        <p>Free-range chickens raised in natural environments for superior quality. Antibiotic-free and hormone-free for healthier consumption.</p>
+                        <div class="product-price">Starting at $8.50/kg</div>
+                        <a href="#contact" class="btn-product">Request Quote</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="broiler.jpeg" alt="Premium Broilers">
+                    </div>
+                    <div class="product-info">
+                        <h3>Broilers</h3>
+                        <p>Premium quality broiler chickens available for bulk orders. Raised with sustainable farming practices and optimal nutrition.</p>
+                        <div class="product-price">Starting at $7.20/kg</div>
+                        <a href="#contact" class="btn-product">Request Quote</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="guinea.jpeg" alt="Guinea Fowl">
+                    </div>
+                    <div class="product-info">
+                        <h3>Guinea Fowl</h3>
+                        <p>Nutrient-rich, flavorful birds raised in open pastures. Known for their natural pest control abilities and distinctive taste.</p>
+                        <div class="product-price">Starting at $15/bird</div>
+                        <a href="#contact" class="btn-product">Request Quote</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="turkey.jpeg" alt="Heritage Turkeys">
+                    </div>
+                    <div class="product-info">
+                        <h3>Turkeys</h3>
+                        <p>Heritage breed turkeys raised without antibiotics or hormones. Perfect for special occasions and premium dining experiences.</p>
+                        <div class="product-price">Starting at $35/bird</div>
+                        <a href="#contact" class="btn-product">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Features Section -->
+    <section class="product-features">
+        <div class="container">
+            <div class="page-header">
+                <h1>Why Choose Our Products</h1>
+                <p>Our commitment to excellence in sustainable farming and premium quality</p>
+            </div>
+            
+            <div class="features-container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Organic & Sustainable</h3>
+                        <p>All livestock raised using climate-smart, zero-grazing, and organic farming methods that protect the environment while ensuring premium quality.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Animal Welfare</h3>
+                        <p>We prioritize animal health and happiness with spacious, natural living conditions and proper veterinary care throughout their lives.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>Rigorous quality standards and regular inspections ensure only the highest quality products reach our customers.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Impact</h3>
+                        <p>Every purchase supports local communities through our training programs for youth, women, and farmers across Zimbabwe and Zambia.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Reliable Supply</h3>
+                        <p>Consistent availability and reliable delivery schedules to meet your business needs, whether bulk orders or regular supply contracts.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certified Standards</h3>
+                        <p>All our products meet international quality and safety standards, with full traceability from farm to table.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Partner with Us?</h2>
+            <p>Join the sustainable farming revolution. Get premium quality livestock and support community development across Zimbabwe and Zambia.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-secondary">Get Quote</a>
+                <a href="tel:+263123456789" class="btn btn-primary">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script>
+        // Load components and initialize functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    
+                    // Set active navigation link
+                    setTimeout(() => {
+                        const navLinks = document.querySelectorAll('nav a');
+                        navLinks.forEach(link => {
+                            if (link.textContent.trim() === 'Products' || link.getAttribute('href') === '#products') {
+                                link.classList.add('active');
+                            }
+                        });
+
+                        // Reinitialize mobile navigation after header loads
+                        const mobileToggle = document.getElementById('mobileToggle');
+                        const mainNav = document.getElementById('mainNav');
+                        
+                        if (mobileToggle && mainNav) {
+                            mobileToggle.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                mainNav.classList.toggle('active');
+                                const icon = mobileToggle.querySelector('i');
+                                icon.classList.toggle('fa-bars');
+                                icon.classList.toggle('fa-times');
+                            });
+
+                            // Close menu when clicking outside
+                            document.addEventListener('click', (e) => {
+                                if (mainNav.classList.contains('active') && 
+                                    !mainNav.contains(e.target) && 
+                                    !mobileToggle.contains(e.target)) {
+                                    mainNav.classList.remove('active');
+                                    const icon = mobileToggle.querySelector('i');
+                                    icon.classList.add('fa-bars');
+                                    icon.classList.remove('fa-times');
+                                }
+                            });
+
+                            // Close menu when clicking nav links
+                            document.querySelectorAll('nav a').forEach(link => {
+                                link.addEventListener('click', () => {
+                                    mainNav.classList.remove('active');
+                                    const icon = mobileToggle.querySelector('i');
+                                    icon.classList.add('fa-bars');
+                                    icon.classList.remove('fa-times');
+                                });
+                            });
+                        }
+                    }, 100);
+                })
+                .catch(error => console.error('Error loading header:', error));
+            
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        // Smooth scroll for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
