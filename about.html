@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Jena Farming Projects</title>
+    
+    <!-- External Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* About Page Specific Styles */
+        :root {
+            --white: #ffffff;
+            --light-green: #f5faf7;
+            --primary-green: #2e8b57;
+            --dark-green: #1e5c3a;
+            --light-brown: #a58a67;
+            --beige: #f8f4e9;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        body {
+            padding-top: 80px;
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            margin: 0;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('about.jpeg') no-repeat center center/cover;
+            margin-top: -8px;
+            padding: 200px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+
+        }
+        
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23f5faf7"/></svg>');
+            background-size: cover;
+        }
+        
+        .about-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .about-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 100px 0;
+            background-color: var(--light-green);
+            position: relative;
+        }
+        
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .story-text {
+            flex: 1;
+        }
+        
+        .story-text h2 {
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .story-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--light-brown);
+            border-radius: 2px;
+        }
+        
+        .story-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .motto {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--light-brown);
+        }
+        
+        .motto p {
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--dark-green);
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .story-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+        
+        .story-image:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .mv-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .mv-card {
+            background: var(--light-green);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--primary-green);
+        }
+        
+        .mv-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,50 Q50,0 100,50 L100,100 L0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .mv-card h3 {
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mv-card h3 i {
+            margin-right: 15px;
+            color: var(--light-brown);
+        }
+        
+        .mv-card p {
+            color: #555;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 100px 0;
+            background-color: var(--beige);
+        }
+        
+        .values-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .values-header h2 {
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .values-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-green);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--light-green);
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover .value-icon {
+            background-color: var(--primary-green);
+            transform: scale(1.1);
+        }
+        
+        .value-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover .value-icon i {
+            color: white;
+        }
+        
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+        }
+        
+        .value-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .team-header h2 {
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .team-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            background: var(--light-green);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .team-info h3 {
+            margin-bottom: 5px;
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+        }
+        
+        .team-info p {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .team-info .description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 100px 0;
+            background-color: var(--beige);
+        }
+        
+        .partners-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .partners-header h2 {
+            color: var(--dark-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .partners-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .partner-logo {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .partner-logo:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            width: auto;
+            height: auto;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-green);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .about-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .story-content {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                order: -1;
+            }
+            
+            .mv-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 80px 0;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+            }
+            
+            .motto p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-section {
+                padding: 70px 0;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .story-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .values-header h2, .team-header h2, .partners-header h2 {
+                font-size: 2rem;
+            }
+            
+            .mv-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Our Story & Mission</h1>
+            <p>Discover the passion and values behind Jena Farming Projects</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Journey</h2>
+                    <p>Jena Farming Projects was founded with a vision to revolutionize sustainable farming practices in Zimbabwe and Zambia. What began as a small family operation has grown into a thriving agricultural enterprise that remains rooted in our core values of sustainability, quality, and community.</p>
+                    
+                    <p>Our journey started with a simple belief: that we could produce high-quality livestock while respecting the environment and empowering local communities. Over the years, we've expanded our operations while staying true to our founding principles of ethical farming and environmental stewardship.</p>
+                    
+                    <div class="motto">
+                        <p>"Naturally grown. Locally proud."</p>
+                    </div>
+                    
+                    <p>Today, we're proud to be a leading sustainable farm in the region, producing premium goats, cattle, poultry, and other livestock through climate-smart practices that benefit both people and the planet.</p>
+                </div>
+                <div class="story-image">
+                    <img src="background.jpeg" alt="Jena Farming Journey">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="mv-container">
+                <div class="mv-card">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>"To be Zimbabwe's leading sustainable livestock, poultry and farm fresh organic vegetable producer, driving food security, economic growth, and environmental stewardship for generations to come."</p>
+                </div>
+                
+                <div class="mv-card">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>"At Jena Farming Projects, we are committed to producing high-quality goats, cattle, and poultry through sustainable, climate-smart practices. We empower local communities, promote organic and eco-friendly farming methods, and contribute to the Sustainable Development Goals by advancing food security, decent livelihoods, and responsible resource management."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="values-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do at Jena Farming Projects</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We prioritize environmental stewardship through climate-smart practices, resource conservation, and sustainable farming methods that protect our planet for future generations.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Quality</h3>
+                    <p>We maintain the highest standards in animal welfare, product quality, and farming practices to deliver exceptional products that our customers can trust.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We believe in empowering local communities through job creation, training programs, and partnerships that foster economic growth and social development.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We conduct our business with honesty, transparency, and ethical practices, building trust with our customers, partners, and communities.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously explore new techniques and technologies to improve our farming practices, increase efficiency, and reduce our environmental impact.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Compassion</h3>
+                    <p>We practice humane animal treatment and care deeply about the wellbeing of all living creatures in our care and the communities we serve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="team-header">
+                <h2>Our Leadership</h2>
+                <p>Meet the dedicated team behind Jena Farming Projects</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="team-founder.jpg" alt="Founder">
+                    </div>
+                    <div class="team-info">
+                        <h3>Lazaros Magaya</h3>
+                        <p>Founder & CEO</p>
+                        <p class="description">With over 20 years of experience in sustainable agriculture, James founded Jena Farming Projects to revolutionize farming practices in Zimbabwe and Zambia.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="team-operations.jpg" alt="Operations Manager">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sarah Chidemo</h3>
+                        <p>Operations Manager</p>
+                        <p class="description">Sarah oversees our daily farming operations, ensuring that our sustainable practices are implemented consistently across all our farms.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="team-sustainability.jpg" alt="Sustainability Officer">
+                    </div>
+                    <div class="team-info">
+                        <h3>Thomas Moyo</h3>
+                        <p>Sustainability Officer</p>
+                        <p class="description">Thomas leads our sustainability initiatives, ensuring that we meet our environmental goals and contribute positively to the SDGs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="partners-header">
+                <h2>Our Partners</h2>
+                <p>We're proud to collaborate with organizations that share our values and vision</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="partner-1.png" alt="Partner 1">
+                </div>
+                
+                <div class="partner-logo">
+                    <img src="partner-2.png" alt="Partner 2">
+                </div>
+                
+                <div class="partner-logo">
+                    <img src="partner-3.png" alt="Partner 3">
+                </div>
+                
+                <div class="partner-logo">
+                    <img src="partner-4.png" alt="Partner 4">
+                </div>
+                
+                <div class="partner-logo">
+                    <img src="partner-5.png" alt="Partner 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join Us on Our Journey</h2>
+                <p>Become part of our story by partnering with us or exploring our sustainable products</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/263771137151" class="btn btn-secondary">Get In Touch</a>
+                    <a href="products.html" class="btn btn-primary">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script>
+        // Load components and initialize functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    
+                    // Set active navigation link
+                    setTimeout(() => {
+                        const navLinks = document.querySelectorAll('nav a');
+                        navLinks.forEach(link => {
+                            if (link.textContent.trim() === 'About' || link.getAttribute('href') === '#about') {
+                                link.classList.add('active');
+                            }
+                        });
+
+                        // Reinitialize mobile navigation after header loads
+                        const mobileToggle = document.getElementById('mobileToggle');
+                        const mainNav = document.getElementById('mainNav');
+                        
+                        if (mobileToggle && mainNav) {
+                            mobileToggle.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                mainNav.classList.toggle('active');
+                                const icon = mobileToggle.querySelector('i');
+                                icon.classList.toggle('fa-bars');
+                                icon.classList.toggle('fa-times');
+                            });
+
+                            // Close menu when clicking outside
+                            document.addEventListener('click', (e) => {
+                                if (mainNav.classList.contains('active') && 
+                                    !mainNav.contains(e.target) && 
+                                    !mobileToggle.contains(e.target)) {
+                                    mainNav.classList.remove('active');
+                                    const icon = mobileToggle.querySelector('i');
+                                    icon.classList.add('fa-bars');
+                                    icon.classList.remove('fa-times');
+                                }
+                            });
+
+                            // Close menu when clicking nav links
+                            document.querySelectorAll('nav a').forEach(link => {
+                                link.addEventListener('click', () => {
+                                    mainNav.classList.remove('active');
+                                    const icon = mobileToggle.querySelector('i');
+                                    icon.classList.add('fa-bars');
+                                    icon.classList.remove('fa-times');
+                                });
+                            });
+                        }
+                    }, 100);
+                })
+                .catch(error => console.error('Error loading header:', error));
+            
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animation on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.value-card, .team-card, .mv-card');
+                
+                elements.forEach(element => {
+                    const position = element.getBoundingClientRect();
+                    
+                    // If element is in viewport
+                    if(position.top < window.innerHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Initialize elements for animation
+            document.querySelectorAll('.value-card, .team-card, .mv-card').forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            // Listen for scroll events
+            window.addEventListener('scroll', animateOnScroll);
+            // Initial check
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>

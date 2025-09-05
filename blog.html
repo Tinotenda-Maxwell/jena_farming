@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & News | Jena Farming Projects</title>
+    
+    <!-- External Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Blog Page Specific Styles */
+        :root {
+            --white: #ffffff;
+            --light-green: #f5faf7;
+            --primary-green: #2e8b57;
+            --dark-green: #1e5c3a;
+            --light-brown: #a58a67;
+            --beige: #f8f4e9;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        body {
+            padding-top: 80px;
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            margin: 0;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .blog-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('blog.jpeg') no-repeat center center/cover;
+            padding: 190px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: -10px;
+        }
+        
+        .blog-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23f5faf7"/></svg>');
+            background-size: cover;
+        }
+        
+        .blog-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .blog-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Blog Content Layout */
+        .blog-content {
+            padding: 80px 0;
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 50px;
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            margin-bottom: 60px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .featured-post:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .featured-image {
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .featured-post:hover .featured-image img {
+            transform: scale(1.05);
+        }
+        
+        .featured-content {
+            padding: 30px;
+        }
+        
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .post-meta span {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-meta i {
+            margin-right: 5px;
+            color: var(--primary-green);
+        }
+        
+        .featured-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+        
+        .featured-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-green);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .read-more:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* Posts Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .post-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .post-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .post-card:hover .post-image img {
+            transform: scale(1.05);
+        }
+        
+        .post-content {
+            padding: 25px;
+        }
+        
+        .post-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+        
+        .post-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background: var(--light-green);
+            color: var(--primary-green);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+        
+        .sidebar-widget {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .sidebar-widget h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-green);
+        }
+        
+        /* Categories Widget */
+        .categories-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .categories-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .categories-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .categories-list a:hover {
+            color: var(--primary-green);
+        }
+        
+        .categories-list span {
+            background: var(--light-green);
+            color: var(--primary-green);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Recent Posts Widget */
+        .recent-posts {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .recent-post {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .recent-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .recent-post-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .recent-post-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recent-post-content h4 {
+            margin: 0 0 5px;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .recent-post-content a {
+            color: var(--dark-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .recent-post-content a:hover {
+            color: var(--primary-green);
+        }
+        
+        .recent-post-content .post-date {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        /* Newsletter Widget */
+        .newsletter-form {
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--dark-green);
+        }
+        
+        /* Tags Widget */
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag-link {
+            background: var(--light-green);
+            color: var(--primary-green);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .tag-link:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .page-numbers {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            gap: 10px;
+        }
+        
+        .page-numbers li a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background: var(--light-green);
+            color: var(--dark-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .page-numbers li a:hover,
+        .page-numbers li a.current {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-green);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .blog-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .blog-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-top: 50px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero {
+                padding: 80px 0;
+            }
+            
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                height: 300px;
+            }
+            
+            .featured-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section {
+                padding: 70px 0;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .post-meta span {
+                margin-right: 0;
+            }
+            
+            .featured-content {
+                padding: 20px;
+            }
+            
+            .post-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Jena Farming Blog</h1>
+            <p>Latest news, farming tips, and insights from our sustainable farms in Zimbabwe and Zambia</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <main class="posts-main">
+                <!-- Featured Post -->
+                <article class="featured-post">
+                    <div class="featured-image">
+                        <img src="featured-post.jpg" alt="Sustainable Farming Practices">
+                    </div>
+                    <div class="featured-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                            <span><i class="far fa-user"></i> By James Jenamambo</span>
+                            <span><i class="far fa-folder"></i> Sustainable Farming</span>
+                        </div>
+                        <h2>How We're Implementing Climate-Smart Agriculture in Zimbabwe</h2>
+                        <p>Discover our innovative approaches to sustainable farming that are increasing yields while reducing environmental impact. Learn about our water conservation techniques, organic pest management, and soil health initiatives that are transforming agriculture in the region...</p>
+                        <a href="#" class="read-more">Read Full Article</a>
+                    </div>
+                </article>
+
+                <!-- Posts Grid -->
+                <div class="posts-grid">
+                    <!-- Post 1 -->
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="post1.jpg" alt="Goat Farming Tips">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> June 10, 2023</span>
+                            </div>
+                            <h3>5 Essential Tips for Successful Goat Farming</h3>
+                            <p>Learn the key practices for raising healthy, productive goats including housing requirements, nutrition needs, and health management strategies...</p>
+                            <div class="post-tags">
+                                <span class="tag">Goats</span>
+                                <span class="tag">Farming Tips</span>
+                            </div>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="post2.jpg" alt="Poultry Farming">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> June 5, 2023</span>
+                            </div>
+                            <h3>Understanding the Differences Between Broilers and Roadrunners</h3>
+                            <p>Discover the unique characteristics, growth requirements, and market advantages of both broiler chickens and roadrunners for your poultry operation...</p>
+                            <div class="post-tags">
+                                <span class="tag">Poultry</span>
+                                <span class="tag">Education</span>
+                            </div>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="post3.jpg" alt="Community Impact">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> May 28, 2023</span>
+                            </div>
+                            <h3>Empowering Women Farmers Through Our Training Programs</h3>
+                            <p>How our initiatives are helping women in rural communities develop sustainable farming skills and build successful agricultural businesses...</p>
+                            <div class="post-tags">
+                                <span class="tag">Community</span>
+                                <span class="tag">Women</span>
+                            </div>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 4 -->
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="post4.jpg" alt="Organic Manure">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> May 20, 2023</span>
+                            </div>
+                            <h3>The Benefits of Using Organic Manure in Crop Production</h3>
+                            <p>Learn how our zero-grazing systems produce high-quality organic manure and how it can improve soil health and crop yields compared to chemical fertilizers...</p>
+                            <div class="post-tags">
+                                <span class="tag">Organic</span>
+                                <span class="tag">Soil Health</span>
+                            </div>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 5 -->
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="post5.jpg" alt="Cattle Farming">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> May 15, 2023</span>
+                            </div>
+                            <h3>Best Practices for Sustainable Cattle Ranching</h3>
+                            <p>Explore our approach to cattle farming that prioritizes animal welfare, environmental sustainability, and economic viability for small-scale farmers...</p>
+                            <div class="post-tags">
+                                <span class="tag">Cattle</span>
+                                <span class="tag">Sustainability</span>
+                            </div>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 6 -->
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="post6.jpg" alt="Guinea Fowl">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar"></i> May 10, 2023</span>
+                            </div>
+                            <h3>Why Guinea Fowl Are Perfect for Sustainable Poultry Farming</h3>
+                            <p>Discover the advantages of raising guinea fowl, including their natural pest control abilities, low feed requirements, and growing market demand...</p>
+                            <div class="post-tags">
+                                <span class="tag">Guinea Fowl</span>
+                                <span class="tag">Poultry</span>
+                            </div>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <ul class="page-numbers">
+                        <li><a href="#" class="current">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- About Widget -->
+                <div class="sidebar-widget">
+                    <h3>About Our Blog</h3>
+                    <p>Welcome to the Jena Farming Projects blog, where we share insights, tips, and news about sustainable farming practices in Zimbabwe and Zambia.</p>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <ul class="categories-list">
+                        <li><a href="#">Sustainable Farming <span>15</span></a></li>
+                        <li><a href="#">Livestock Management <span>12</span></a></li>
+                        <li><a href="#">Poultry Farming <span>9</span></a></li>
+                        <li><a href="#">Community Impact <span>7</span></a></li>
+                        <li><a href="#">Farming Tips <span>18</span></a></li>
+                        <li><a href="#">Market News <span>5</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Recent Posts Widget -->
+                <div class="sidebar-widget">
+                    <h3>Recent Posts</h3>
+                    <ul class="recent-posts">
+                        <li class="recent-post">
+                            <div class="recent-post-img">
+                                <img src="recent1.jpg" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">How to Start a Small-Scale Poultry Business</a></h4>
+                                <span class="post-date">June 12, 2023</span>
+                            </div>
+                        </li>
+                        <li class="recent-post">
+                            <div class="recent-post-img">
+                                <img src="recent2.jpg" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">The Economic Benefits of Zero-Grazing Systems</a></h4>
+                                <span class="post-date">June 8, 2023</span>
+                            </div>
+                        </li>
+                        <li class="recent-post">
+                            <div class="recent-post-img">
+                                <img src="recent3.jpg" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">Understanding Animal Welfare Standards</a></h4>
+                                <span class="post-date">June 3, 2023</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get the latest farming tips and updates directly to your inbox.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+
+                <!-- Tags Widget -->
+                <div class="sidebar-widget">
+                    <h3>Popular Tags</h3>
+                    <div class="tags-cloud">
+                        <a href="#" class="tag-link">Sustainability</a>
+                        <a href="#" class="tag-link">Organic</a>
+                        <a href="#" class="tag-link">Goats</a>
+                        <a href="#" class="tag-link">Poultry</a>
+                        <a href="#" class="tag-link">Cattle</a>
+                        <a href="#" class="tag-link">Training</a>
+                        <a href="#" class="tag-link">SDGs</a>
+                        <a href="#" class="tag-link">Community</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Stay Connected With Our Farming Community</h2>
+                <p>Join our newsletter for regular updates, farming tips, and exclusive insights from our sustainable farms</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/263771137151" class="btn btn-secondary">Contact Us</a>
+                    <a href="products.html" class="btn btn-primary">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script>
+        // Load components and initialize functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    
+                    // Set active navigation link
+                    setTimeout(() => {
+                        const navLinks = document.querySelectorAll('nav a');
+                        navLinks.forEach(link => {
+                            if (link.textContent.trim() === 'Blog' || link.getAttribute('href') === '#blog') {
+                                link.classList.add('active');
+                            }
+                        });
+
+                        // Reinitialize mobile navigation after header loads
+                        const mobileToggle = document.getElementById('mobileToggle');
+                        const mainNav = document.getElementById('mainNav');
+                        
+                        if (mobileToggle && mainNav) {
+                            mobileToggle.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                mainNav.classList.toggle('active');
+                                const icon = mobileToggle.querySelector('i');
+                                icon.classList.toggle('fa-bars');
+                                icon.classList.toggle('fa-times');
+                            });
+
+                            // Close menu when clicking outside
+                            document.addEventListener('click', (e) => {
+                                if (mainNav.classList.contains('active') && 
+                                    !mainNav.contains(e.target) && 
+                                    !mobileToggle.contains(e.target)) {
+                                    mainNav.classList.remove('active');
+                                    const icon = mobileToggle.querySelector('i');
+                                    icon.classList.add('fa-bars');
+                                    icon.classList.remove('fa-times');
+                                }
+                            });
+
+                            // Close menu when clicking nav links
+                            document.querySelectorAll('nav a').forEach(link => {
+                                link.addEventListener('click', () => {
+                                    mainNav.classList.remove('active');
+                                    const icon = mobileToggle.querySelector('i');
+                                    icon.classList.add('fa-bars');
+                                    icon.classList.remove('fa-times');
+                                });
+                            });
+                        }
+                    }, 100);
+                })
+                .catch(error => console.error('Error loading header:', error));
+            
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animation on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.post-card, .sidebar-widget');
+                
+                elements.forEach(element => {
+                    const position = element.getBoundingClientRect();
+                    
+                    // If element is in viewport
+                    if(position.top < window.innerHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Initialize elements for animation
+            document.querySelectorAll('.post-card, .sidebar-widget').forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            // Listen for scroll events
+            window.addEventListener('scroll', animateOnScroll);
+            // Initial check
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
