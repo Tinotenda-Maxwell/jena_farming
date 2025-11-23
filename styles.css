@@ -30,10 +30,9 @@ body {
     background-color: var(--light-beige);
 }
 
-/* Placeholder ensures ALL pages start BELOW the fixed header */
+/* Push page content BELOW the fixed header */
 #header-placeholder {
-    height: 80px; /* MUST match header height */
-    width: 100%;
+    height: 80px;
 }
 
 /* --------------------------------------------------
@@ -56,6 +55,8 @@ header {
     display: flex;
     align-items: center;
     gap: 40px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .logo {
@@ -94,8 +95,8 @@ nav ul li a {
     text-decoration: none;
     color: white;
     font-weight: 500;
-    transition: color 0.3s;
     position: relative;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
@@ -119,8 +120,10 @@ nav ul li a:hover::after {
 
 .mobile-toggle {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
+    color: white;
+    z-index: 10000;
 }
 
 /* --------------------------------------------------
@@ -143,7 +146,6 @@ footer {
 .footer-logo {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--white);
     margin-bottom: 15px;
 }
 
@@ -218,14 +220,13 @@ footer {
 .social-links a {
     width: 40px;
     height: 40px;
+    background-color: rgba(255,255,255,.1);
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: var(--white);
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
+    align-items: center;
+    color: white;
+    transition: all .3s;
 }
 
 .social-links a:hover {
@@ -233,16 +234,14 @@ footer {
     transform: translateY(-3px);
 }
 
-.copyright {
+copyright {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     opacity: 0.7;
-    font-size: 0.9rem;
 }
 
 /* --------------------------------------------------
-   WHATSAPP FLOAT BUTTON
+   WHATSAPP
 -------------------------------------------------- */
 
 .whatsapp-float {
@@ -252,38 +251,71 @@ footer {
     width: 60px;
     height: 60px;
     background-color: #25D366;
-    color: var(--white);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     z-index: 999;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
 /* --------------------------------------------------
-   RESPONSIVE DESIGN
+   MOBILE MENU (FINAL, FIXED, CLEAN)
 -------------------------------------------------- */
 
 @media (max-width: 768px) {
+
+    .mobile-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    /* Full-width mobile dropdown */
+    #mainNav {
+        position: fixed !important;
+        top: 80px;
+        left: 0;
+        width: 100% !important;
+        background-color: var(--dark-text);
+        z-index: 9999;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        clip-path: polygon(0 0,100% 0,100% 0,0 0);
+        transition: clip-path .35s ease;
+        padding: 10px 0;
+    }
+
+    #mainNav.active {
+        clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+    }
+
+    /* Stack menu items */
+    #mainNav ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    #mainNav ul li {
+        padding: 12px 0;
+        width: 100%;
+    }
+
+    #mainNav ul li a {
+        font-size: 16px;
+        padding: 12px 0;
+        display: block;
+    }
+
+    /* Header styling fix */
     .header-content {
         justify-content: space-between;
         padding: 0 15px;
-        gap: 0;
     }
 
-    .logo {
-        margin-left: -15px;
-        flex: 1;
-        min-width: 0;
+    .logo img {
+        height: 40px;
     }
 
     .logo h1 {
@@ -292,64 +324,13 @@ footer {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
-    .logo img {
-        height: 40px;
-    }
-
-    .mobile-toggle {
-        display: block;
-        color: white;
-        margin-left: 15px;
-        z-index: 1001;
-    }
-
-    nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--dark-text);
-        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-
-    nav.active {
-        max-height: 500px;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    nav ul li {
-        width: 100%;
-        text-align: center;
-        margin: 0;
-    }
-
-    nav ul li a {
-        padding: 15px 20px;
-        font-size: 15px;
-    }
 }
 
 @media (max-width: 430px) {
-    .logo h1 {
-        font-size: 14px;
-    }
+    .logo h1 { font-size: 14px; }
 }
 
 @media (max-width: 410px) {
-    .logo h1 {
-        font-size: 13px;
-    }
-    .logo img {
-        height: 35px;
-    }
+    .logo h1 { font-size: 13px; }
+    .logo img { height: 35px; }
 }
