@@ -1,3 +1,6 @@
+/* --------------------------------------------------
+   GLOBAL RESET
+-------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +18,10 @@
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* --------------------------------------------------
+   GLOBAL BODY + HEADER SPACING FIX
+-------------------------------------------------- */
+
 body {
     font-family: 'Open Sans', sans-serif;
     color: var(--dark-text);
@@ -23,29 +30,26 @@ body {
     background-color: var(--light-beige);
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    color: var(--primary-green);
-}
-
-.container {
+/* Placeholder ensures ALL pages start BELOW the fixed header */
+#header-placeholder {
+    height: 80px; /* MUST match header height */
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
-/* Header Styles */
+/* --------------------------------------------------
+   HEADER (GLOBAL)
+-------------------------------------------------- */
+
 header {
     background-color: var(--dark-text);
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 80px;
     z-index: 1000;
     box-shadow: var(--shadow);
     padding: 15px 0;
-    transition: all 0.3s ease;
-    margin-top: -85px;
 }
 
 .header-content {
@@ -57,8 +61,6 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    margin-left: -175px;
-
 }
 
 .logo img {
@@ -69,17 +71,14 @@ header {
 .logo h1 {
     font-size: 1.5rem;
     color: white;
-    margin: 0;
-    display: inline;
 }
 
 .logo span {
     color: white;
 }
 
-nav{
+nav {
     margin-left: auto;
-    margin-right: -90px;
 }
 
 nav ul {
@@ -124,7 +123,10 @@ nav ul li a:hover::after {
     cursor: pointer;
 }
 
-/* Footer */
+/* --------------------------------------------------
+   FOOTER (GLOBAL)
+-------------------------------------------------- */
+
 footer {
     background-color: var(--dark-text);
     color: var(--white);
@@ -141,8 +143,8 @@ footer {
 .footer-logo {
     font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 15px;
     color: var(--white);
+    margin-bottom: 15px;
 }
 
 .footer-logo span {
@@ -154,13 +156,15 @@ footer {
     opacity: 0.8;
 }
 
-.footer-links h4, .footer-contact h4 {
+.footer-links h4,
+.footer-contact h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
     position: relative;
 }
 
-.footer-links h4::after, .footer-contact h4::after {
+.footer-links h4::after,
+.footer-contact h4::after {
     content: '';
     position: absolute;
     bottom: -8px;
@@ -212,13 +216,13 @@ footer {
 }
 
 .social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--white);
     font-size: 1.2rem;
     transition: all 0.3s ease;
@@ -237,7 +241,10 @@ footer {
     font-size: 0.9rem;
 }
 
-/* WhatsApp Integration */
+/* --------------------------------------------------
+   WHATSAPP FLOAT BUTTON
+-------------------------------------------------- */
+
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -262,112 +269,80 @@ footer {
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .hero h1 {
-        font-size: 3rem;
-    }
-}
+/* --------------------------------------------------
+   RESPONSIVE DESIGN
+-------------------------------------------------- */
 
 @media (max-width: 768px) {
-    /* Header layout */
     .header-content {
-        display: flex;
         justify-content: space-between;
-        align-items: center;
         padding: 0 15px;
         gap: 0;
     }
 
-    /* Logo adjustments */
     .logo {
         margin-left: -15px;
         flex: 1;
-        min-width: 0; /* Allows text truncation if needed */
+        min-width: 0;
     }
+
     .logo h1 {
         font-size: 1.3rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
     .logo img {
         height: 40px;
-        margin-right: 10px;
     }
-   
+
     .mobile-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 15px;
+        display: block;
         color: white;
-        font-size: 1.8rem;
-        background: transparent;
-        border: none;
-        cursor: pointer;
+        margin-left: 15px;
         z-index: 1001;
     }
 
-    /* Mobile menu styling */
     nav {
         position: absolute;
-        top: 100%; 
+        top: 100%;
         left: 0;
         width: 100%;
         background-color: var(--dark-text);
         box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: all 0.4s ease;
         max-height: 0;
         overflow: hidden;
+        transition: all 0.4s ease;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     }
 
     nav.active {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         max-height: 500px;
-    }
-    /* Navigation links */
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        padding: 0;
-    }
-    nav ul li {
-        margin: 0;
-        width: 100%;
-        text-align: center;
-    }
-    nav ul li a {
-        display: block;
-        padding: 15px 20px;
-        font-size: 15px;
-        color: white !important;
-        transition: all 0.3s ease;
-    }
-    nav ul li a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: var(--primary-green) !important;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
-    /* Close button */
-    .close-menu {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        color: white;
-        font-size: 2rem;
-        background: none;
-        border: none;
-        cursor: pointer;
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    nav ul li a {
+        padding: 15px 20px;
+        font-size: 15px;
     }
 }
 
-/* For very small screens */
 @media (max-width: 430px) {
     .logo h1 {
         font-size: 14px;
+    }
 }
 
 @media (max-width: 410px) {
@@ -376,9 +351,5 @@ footer {
     }
     .logo img {
         height: 35px;
-    }
-    nav ul li a {
-        font-size: 1rem;
-        padding: 12px 15px;
     }
 }

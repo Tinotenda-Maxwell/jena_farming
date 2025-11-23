@@ -15,28 +15,32 @@
     <style>
         /* About Page Specific Styles */
         :root {
-            --white: #ffffff;
-            --light-green: #f5faf7;
-            --primary-green: #2e8b57;
-            --dark-green: #1e5c3a;
-            --light-brown: #a58a67;
-            --beige: #f8f4e9;
-            --shadow: 0 5px 15px rgba(0,0,0,0.1);
-            --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
+        --white: #ffffff;
+        --light-green: #f5faf7;
+        --primary-green: #2e8b57;
+        --dark-green: #1e5c3a;
+        --light-brown: #a58a67;
+        --beige: #f8f4e9;
+        --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
         }
-        
+
         body {
-            padding-top: 80px;
             font-family: 'Open Sans', sans-serif;
-            color: #333;
             margin: 0;
             background-color: var(--white);
         }
-        
+
+        #header-placeholder {
+            height: 80px;
+        }
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 5;
         }
 
         /* Hero Section */
@@ -754,7 +758,7 @@
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-image">
-                        <img src="team-founder.jpg" alt="Founder">
+                        <img src="lazaros.jpg" alt="Founder">
                     </div>
                     <div class="team-info">
                         <h3>Lazaros Magaya</h3>
@@ -765,7 +769,7 @@
                 
                 <div class="team-card">
                     <div class="team-image">
-                        <img src="team-operations.jpg" alt="Operations Manager">
+                        <img src="sara.jpg" alt="Operations Manager">
                     </div>
                     <div class="team-info">
                         <h3>Sarah Chidemo</h3>
@@ -776,7 +780,7 @@
                 
                 <div class="team-card">
                     <div class="team-image">
-                        <img src="team-sustainability.jpg" alt="Sustainability Officer">
+                        <img src="laza.jpg" alt="Sustainability Officer">
                     </div>
                     <div class="team-info">
                         <h3>Thomas Moyo</h3>
@@ -798,23 +802,23 @@
             
             <div class="partners-grid">
                 <div class="partner-logo">
-                    <img src="partner-1.png" alt="Partner 1">
+                    <img src="national.png" alt="Partner 1">
                 </div>
                 
                 <div class="partner-logo">
-                    <img src="partner-2.png" alt="Partner 2">
+                    <img src="chicken.jpg" alt="Partner 2">
                 </div>
                 
                 <div class="partner-logo">
-                    <img src="partner-3.png" alt="Partner 3">
+                    <img src="pizza.jpg" alt="Partner 3">
                 </div>
                 
                 <div class="partner-logo">
-                    <img src="partner-4.png" alt="Partner 4">
+                    <img src="tm.png" alt="Partner 4">
                 </div>
                 
                 <div class="partner-logo">
-                    <img src="partner-5.png" alt="Partner 5">
+                    <img src="chop.png" alt="Partner 5">
                 </div>
             </div>
         </div>

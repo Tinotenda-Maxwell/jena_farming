@@ -15,35 +15,32 @@
     <style>
         /* Sustainable Page Specific Styles */
         :root {
-            --white: #ffffff;
-            --light-green: #f5faf7;
-            --primary-green: #2e8b57;
-            --dark-green: #1e5c3a;
-            --light-brown: #a58a67;
-            --beige: #f8f4e9;
-            --shadow: 0 5px 15px rgba(0,0,0,0.1);
-            --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
+        --white: #ffffff;
+        --light-green: #f5faf7;
+        --primary-green: #2e8b57;
+        --dark-green: #1e5c3a;
+        --light-brown: #a58a67;
+        --beige: #f8f4e9;
+        --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
         body {
-            padding-top: 80px;
             font-family: 'Open Sans', sans-serif;
-            color: #333;
             margin: 0;
             background-color: var(--white);
-            line-height: 1.6;
         }
-        
+
+        #header-placeholder {
+            height: 80px;
+        }
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 5;
         }
 
         /* Hero Section */
@@ -55,6 +52,7 @@
             position: relative;
             overflow: hidden;
             margin-top: -20px;
+            max-height: 800px;
         }
         
         .sustainability-hero::after {
