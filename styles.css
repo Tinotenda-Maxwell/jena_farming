@@ -334,3 +334,70 @@ copyright {
     .logo h1 { font-size: 13px; }
     .logo img { height: 35px; }
 }
+
+
+/* ===================== Shared enhancements ===================== */
+
+/* Active navigation link */
+nav ul li a.active {
+    color: var(--primary-green);
+}
+
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Header shrinks slightly once the page is scrolled */
+header {
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Footer contact links */
+.contact-info a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.mobile-toggle:focus-visible {
+    outline: 3px solid var(--primary-green);
+    outline-offset: 3px;
+}
+
+/* Scroll-in animation (applied by scripts.js) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Highlight for sections reached via #hash links */
+.hash-highlight {
+    transition: background-color 0.8s ease;
+    background-color: #f5faf7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
